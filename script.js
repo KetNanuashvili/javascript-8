@@ -29,6 +29,7 @@ let data = [
 const arrowLeft = document.getElementById("arrowLeft");
 const arrowRight = document.getElementById("arrowRight");
 const sliderContent = document.getElementById("slider-content");
+let dotsChildElement = document.getElementsByClassName('child');
 let sliderIndex = 0;
 
 function createDivTag(item){
@@ -62,7 +63,14 @@ function createDots(){
     data.forEach(element => {
         const childDot =document.createElement('div')
         childDot.classList.add('child');
+        childDot.setAttribute('data-id', element.id -1);
         dots.appendChild(childDot);
+
+        childDot.addEventListener('click', function(){
+          let id = event.target.getAttribute('data-id');
+          sliderIndex = id;
+          setSlide();
+        })
     });
 
     return dots;
@@ -80,7 +88,10 @@ function setSlide(){
    sliderContent.appendChild(slideItem);
    sliderContent.appendChild(dots);
 
-
+   currentDotActive();
+}
+function currentDotActive (){
+  dotsChildElement[sliderIndex].classList.add('activeDot');
 }
 
 function arrowLeftClick(){

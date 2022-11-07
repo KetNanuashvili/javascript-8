@@ -41,6 +41,9 @@
     margin: 16px;
     opacity: 0.4;
 }
+.child.activeDot{
+    border:  2px solid red;
+}
 .slider-wraper{
     position: relative;
 }
